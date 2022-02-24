@@ -10,12 +10,13 @@ import SwiftUI
 
 extension View {
     func stacked(at position: Int, in total: Int) -> some View {
-        let offset = Double(position - total)
+        let offset = Double(total - position)
         return self.offset(x: 0, y: offset * 10)
     }
 }
 
 struct ContentView: View {
+    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @State var cards: [Card] = Array<Card>.init(repeating: Card.example, count: 10)
     
     var body: some View {
@@ -29,10 +30,33 @@ struct ContentView: View {
                 ZStack {
                     ForEach(0..<cards.count, id:\.self) { index in
                         CardView(card: cards[index]) {
-                            removeCard(at: index)
+                            withAnimation {
+                                removeCard(at: index)
+                            }
                         }
                         .stacked(at: index, in: cards.count)
                     }
+                }
+            }
+            if differentiateWithoutColor {
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        Image(systemName: "xmark.circle")
+                            .padding()
+                            .background(.black.opacity(0.75))
+                            .clipShape(Circle())
+                        Spacer()
+                        Image(systemName: "checkmark.circle")
+                            .padding()
+                            .background(.black.opacity(0.75))
+                            .clipShape(Circle())
+                    }
+                    .foregroundColor(.white)
+                    .font(.largeTitle)
+                    .padding(.horizontal, 50)
+                    .padding()
                 }
             }
         }
