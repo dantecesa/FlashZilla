@@ -9,9 +9,11 @@ import SwiftUI
 
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
+    @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
     let card: Card
     @State private var showingAnswer: Bool = false
     @State private var offset: CGSize = .zero
+    @State private var feedback = UINotificationFeedbackGenerator()
     
     var removal: (() -> Void)? = nil
     
@@ -33,14 +35,20 @@ struct CardView: View {
                 .shadow(radius: 10)
             
             VStack {
-                Text(card.question)
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
-                
-                if showingAnswer == true {
-                    Text(card.answer)
-                        .font(.title)
-                        .foregroundColor(.gray)
+                if voiceOverEnabled {
+                    Text(showingAnswer ? card.answer : card.question)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                } else {
+                    Text(card.question)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                    
+                    if showingAnswer == true {
+                        Text(card.answer)
+                            .font(.title)
+                            .foregroundColor(.gray)
+                    }
                 }
             }
             .padding(20)
@@ -49,14 +57,21 @@ struct CardView: View {
         .frame(width: 450, height: 250)
         .rotationEffect(.degrees(Double(offset.width / 5)))
         .offset(x: offset.width * 5, y: 0)
+        .accessibilityAddTraits(.isButton)
         .opacity(2 - abs(Double(offset.width / 50)))
         .gesture(
             DragGesture()
                 .onChanged { gesture in
                     offset = gesture.translation
+                    
+                    feedback.prepare()
                 }
                 .onEnded { _ in
                     if abs(offset.width) > 100 {
+                        if offset.width < 0 {
+                            feedback.notificationOccurred(.error)
+                        }
+                        
                         removal?()
                     } else {
                         withAnimation {
