@@ -19,10 +19,13 @@ struct ContentView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
     @Environment(\.scenePhase) var scenePhase
+    
+    @State var cards: [Card] = []
     @State private var isActive: Bool = true
-    @State var cards: [Card] = Array<Card>.init(repeating: Card.example, count: 10)
     @State private var timeRemaining: Int = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @State private var showingEditScreen: Bool = false
     
     var body: some View {
         ZStack {
@@ -57,6 +60,27 @@ struct ContentView: View {
                         .clipShape(Capsule())
                 }
             }
+            
+            VStack {
+                HStack {
+                    Spacer()
+                    
+                    Button {
+                        showingEditScreen = true
+                    } label: {
+                        Label("Add Cards", systemImage: "plus.circle")
+                            .padding()
+                            .background(.black.opacity(0.75))
+                            .clipShape(Capsule())
+                    }
+                }
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.body)
+            .padding(.horizontal, 60)
+            .padding(.vertical, 40)
+            
             if differentiateWithoutColor || voiceOverEnabled {
                 VStack {
                     Spacer()
@@ -109,6 +133,8 @@ struct ContentView: View {
                 isActive = false
             }
         }
+        .sheet(isPresented: $showingEditScreen, onDismiss: resetGame, content: EditCardView.init)
+        .onAppear(perform: resetGame)
     }
     
     func removeCard(at index: Int) {
@@ -124,9 +150,18 @@ struct ContentView: View {
     }
     
     func resetGame() {
-        cards = Array<Card>(repeating: Card.example, count: 10)
         timeRemaining = 100
         isActive = true
+        loadCards()
+    }
+    
+    func loadCards() {
+        if let data = UserDefaults.standard.data(forKey: "SavedCards") {
+            if let decodedCards = try? JSONDecoder().decode([Card].self, from: data) {
+                cards = decodedCards
+                return
+            }
+        }
     }
 }
 

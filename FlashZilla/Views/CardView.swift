@@ -10,10 +10,11 @@ import SwiftUI
 struct CardView: View {
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
-    let card: Card
-    @State private var showingAnswer: Bool = false
-    @State private var offset: CGSize = .zero
     @State private var feedback = UINotificationFeedbackGenerator()
+    
+    let card: Card
+    @State private var offset: CGSize = .zero
+    @State private var showingAnswer: Bool = false
     
     var removal: (() -> Void)? = nil
     

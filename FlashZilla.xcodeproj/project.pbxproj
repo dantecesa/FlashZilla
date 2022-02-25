@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BF0880327C84F96000CDC08 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0880227C84F96000CDC08 /* EditCardView.swift */; };
 		6BFED65527C4BC0500FB9D52 /* FlashZillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFED65427C4BC0500FB9D52 /* FlashZillaApp.swift */; };
 		6BFED65727C4BC0500FB9D52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFED65627C4BC0500FB9D52 /* ContentView.swift */; };
 		6BFED65927C4BC0600FB9D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BFED65827C4BC0600FB9D52 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6BF0880227C84F96000CDC08 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
 		6BFED65127C4BC0500FB9D52 /* FlashZilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashZilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFED65427C4BC0500FB9D52 /* FlashZillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashZillaApp.swift; sourceTree = "<group>"; };
 		6BFED65627C4BC0500FB9D52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 			children = (
 				6BFED65627C4BC0500FB9D52 /* ContentView.swift */,
 				6BFED66427C7380A00FB9D52 /* CardView.swift */,
+				6BF0880227C84F96000CDC08 /* EditCardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			files = (
 				6BFED65727C4BC0500FB9D52 /* ContentView.swift in Sources */,
 				6BFED66327C737F900FB9D52 /* Card.swift in Sources */,
+				6BF0880327C84F96000CDC08 /* EditCardView.swift in Sources */,
 				6BFED66527C7380A00FB9D52 /* CardView.swift in Sources */,
 				6BFED65527C4BC0500FB9D52 /* FlashZillaApp.swift in Sources */,
 			);
