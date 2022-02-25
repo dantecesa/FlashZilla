@@ -20,7 +20,7 @@ struct ContentView: View {
     @Environment(\.accessibilityVoiceOverEnabled) var voiceOverEnabled
     @Environment(\.scenePhase) var scenePhase
     
-    @State var cards: [Card] = []
+    @State private var cards: [Card] = DataManager.loadCards()
     @State private var isActive: Bool = true
     @State private var timeRemaining: Int = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -160,12 +160,7 @@ struct ContentView: View {
     }
     
     func loadCards() {
-        if let data = UserDefaults.standard.data(forKey: "SavedCards") {
-            if let decodedCards = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decodedCards
-                return
-            }
-        }
+        cards = DataManager.loadCards()
     }
 }
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		6BF0880327C84F96000CDC08 /* EditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0880227C84F96000CDC08 /* EditCardView.swift */; };
+		6BF0880527C8BD35000CDC08 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0880427C8BD35000CDC08 /* FileManager-DocumentsDirectory.swift */; };
+		6BF0880727C8BE81000CDC08 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BF0880627C8BE81000CDC08 /* DataManager.swift */; };
 		6BFED65527C4BC0500FB9D52 /* FlashZillaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFED65427C4BC0500FB9D52 /* FlashZillaApp.swift */; };
 		6BFED65727C4BC0500FB9D52 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFED65627C4BC0500FB9D52 /* ContentView.swift */; };
 		6BFED65927C4BC0600FB9D52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BFED65827C4BC0600FB9D52 /* Assets.xcassets */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		6BF0880227C84F96000CDC08 /* EditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCardView.swift; sourceTree = "<group>"; };
+		6BF0880427C8BD35000CDC08 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		6BF0880627C8BE81000CDC08 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		6BFED65127C4BC0500FB9D52 /* FlashZilla.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlashZilla.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BFED65427C4BC0500FB9D52 /* FlashZillaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashZillaApp.swift; sourceTree = "<group>"; };
 		6BFED65627C4BC0500FB9D52 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +54,7 @@
 			isa = PBXGroup;
 			children = (
 				6BFED65627C4BC0500FB9D52 /* ContentView.swift */,
+				6BF0880627C8BE81000CDC08 /* DataManager.swift */,
 				6BFED66427C7380A00FB9D52 /* CardView.swift */,
 				6BF0880227C84F96000CDC08 /* EditCardView.swift */,
 			);
@@ -78,6 +83,7 @@
 				6BFED65427C4BC0500FB9D52 /* FlashZillaApp.swift */,
 				6BF0880127C848FF000CDC08 /* Views */,
 				6BF0880027C848FB000CDC08 /* Models */,
+				6BF0880427C8BD35000CDC08 /* FileManager-DocumentsDirectory.swift */,
 				6BFED65827C4BC0600FB9D52 /* Assets.xcassets */,
 				6BFED65A27C4BC0600FB9D52 /* Preview Content */,
 			);
@@ -162,8 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BF0880527C8BD35000CDC08 /* FileManager-DocumentsDirectory.swift in Sources */,
 				6BFED65727C4BC0500FB9D52 /* ContentView.swift in Sources */,
 				6BFED66327C737F900FB9D52 /* Card.swift in Sources */,
+				6BF0880727C8BE81000CDC08 /* DataManager.swift in Sources */,
 				6BF0880327C84F96000CDC08 /* EditCardView.swift in Sources */,
 				6BFED66527C7380A00FB9D52 /* CardView.swift in Sources */,
 				6BFED65527C4BC0500FB9D52 /* FlashZillaApp.swift in Sources */,

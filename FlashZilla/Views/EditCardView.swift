@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditCardView: View {
     @Environment(\.dismiss) var dismiss
-    @State private var cards: [Card] = []
+    @State private var cards: [Card] = DataManager.loadCards()
     @State private var newPrompt: String = ""
     @State private var newAnswer: String = ""
     
@@ -47,7 +47,6 @@ struct EditCardView: View {
                     }
                 }
             }
-            .onAppear(perform: loadCards)
         }
     }
     
@@ -58,29 +57,14 @@ struct EditCardView: View {
         guard trimmedPrompt.isEmpty == false && trimmedAnswer.isEmpty == false else { return }
         
         cards.insert(Card(question: trimmedPrompt, answer: trimmedAnswer), at: 0)
-        saveCards()
+        DataManager.saveCards(cards)
         newPrompt = ""
         newAnswer = ""
     }
     
     func removeCard(at offsets: IndexSet) {
         cards.remove(atOffsets: offsets)
-        saveCards()
-    }
-    
-    func saveCards() {
-        if let data = try? JSONEncoder().encode(cards) {
-            UserDefaults.standard.set(data, forKey: "SavedCards")
-        }
-    }
-    
-    func loadCards() {
-        if let data = UserDefaults.standard.data(forKey: "SavedCards") {
-            if let decodedCards = try? JSONDecoder().decode([Card].self, from: data) {
-                cards = decodedCards
-                return
-            }
-        }
+        DataManager.saveCards(cards)
     }
 }
 
