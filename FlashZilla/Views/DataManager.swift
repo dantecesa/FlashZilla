@@ -22,7 +22,7 @@ struct DataManager {
     
     static func saveCards(_ cards: [Card]) {
         if let data = try? JSONEncoder().encode(cards) {
-            try? data.write(to: savePath)
+            try? data.write(to: savePath, options: [.atomic, .completeFileProtection])
         }
     }
 }
