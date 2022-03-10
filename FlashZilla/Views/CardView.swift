@@ -83,25 +83,20 @@ struct CardView: View {
                     if abs(offset.width) > 100 {
                         if offset.width < 0 {
                             feedback.notificationOccurred(.error)
+                            offset = .zero
                             removal?(true)
-                            withAnimation {
-                                offset = .zero
-                            }
                         } else {
                             removal?(false)
                         }
                     } else {
-                        withAnimation {
-                            offset = .zero
-                        }
+                        offset = .zero
                     }
                 }
         )
         .onTapGesture {
-            withAnimation {
-                showingAnswer.toggle()
-            }
+            showingAnswer.toggle()
         }
+        .animation(.spring())
     }
 }
 
